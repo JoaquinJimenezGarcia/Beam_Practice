@@ -17,10 +17,10 @@ class ParseCSV(beam.DoFn):
         }]
 
 def run():
-    project_id = 'jjgdevelopment-399314'
-    bucketName = 'bucket_test_cloudarch'
+    project_id = ''
+    bucketName = ''
     file = f'gs://{bucketName}/products.csv'
-    bq_table = 'jjgdevelopment-399314:ventas_dataset.transacciones'
+    bq_table = f'{project_id}:products_dataset.transactions'
 
     options = PipelineOptions()
     google_cloud_options = options.view_as(GoogleCloudOptions)
