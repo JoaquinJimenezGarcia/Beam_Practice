@@ -1,0 +1,11 @@
+order_id,user_id,timestamp,country,category,product_id,product_name,quantity,amount,payment_method
+10001,501,2025-06-25T12:45:00Z,ES,electronics,2001,Smartphone X,1,699.99,card
+10002,502,2025-06-25T12:55:00Z,PL,books,3101,Python Basics,2,39.98,paypal
+10003,503,2025-06-25T13:01:00Z,ES,clothing,4105,T-Shirt XL,3,89.50,card
+10004,504,FR,toys,5103,Lego Set,1,49.99,card
+10005,505,DE,electronics,2002,Laptop Z,1,1199.00,transfer
+10006,506,ES,books,3102,Data Science 101,1,25.00,card
+10007,507,IT,home,6101,Blender Pro,1,89.00,paypal
+10008,508,PL,electronics,2003,Wireless Headphones,2,139.98,card
+10009,509,DE,clothing,4106,Jeans Slim Fit,1,59.99,card
+10010,510,ES,toys,5104,Board Game,2,29.98,paypal
