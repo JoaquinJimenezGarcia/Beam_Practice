@@ -11,7 +11,7 @@ resource "google_storage_bucket" "ecommerce_data" {
 }
 
 # Subir archivo CSV
-resource "google_storage_bucket_object" "ventas_csv" {
+resource "google_storage_bucket_object" "sales_csv" {
   name   = "sample_sales.csv"
   bucket = google_storage_bucket.ecommerce_data.name
   source = "${path.module}/data/sample_sales.csv"
