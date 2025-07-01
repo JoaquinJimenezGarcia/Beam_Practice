@@ -10,7 +10,7 @@ resource "google_storage_bucket" "ecommerce_data" {
   force_destroy = true
 }
 
-# Subir archivo CSV
+# Upload CSV
 resource "google_storage_bucket_object" "sales_csv" {
   name   = "sample_sales.csv"
   bucket = google_storage_bucket.ecommerce_data.name
@@ -24,7 +24,7 @@ resource "google_bigquery_dataset" "ecommerce" {
   location   = var.region
 }
 
-# Tabla sales_summary
+# Table sales_summary
 resource "google_bigquery_table" "sales_summary" {
   dataset_id = google_bigquery_dataset.ecommerce.dataset_id
   table_id   = "sales_summary"
@@ -36,7 +36,7 @@ resource "google_bigquery_table" "sales_summary" {
   }
 }
 
-# Tabla user_events_stats
+# Table user_events_stats
 resource "google_bigquery_table" "user_events_stats" {
   dataset_id = google_bigquery_dataset.ecommerce.dataset_id
   table_id   = "user_events_stats"
@@ -46,4 +46,17 @@ resource "google_bigquery_table" "user_events_stats" {
   time_partitioning {
     type = "DAY"
   }
+}
+
+# Pub/Sub topic for user events
+resource "google_pubsub_topic" "user_events" {
+  name = "user-events"
+}
+
+# Subscription to the topic for testing or debugging
+resource "google_pubsub_subscription" "user_events_sub" {
+  name  = "user-events-sub"
+  topic = google_pubsub_topic.user_events.name
+
+  ack_deadline_seconds = 20
 }

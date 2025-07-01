@@ -3,8 +3,9 @@ import random
 import json
 from google.cloud import pubsub_v1
 from datetime import datetime
+import os
 
-PROJECT_ID = "your-gcp-project"
+PROJECT_ID = os.environ["GCP_PROJECT_ID"]
 TOPIC_ID = "user-events"
 
 publisher = pubsub_v1.PublisherClient()
@@ -26,7 +27,6 @@ def generate_event():
         "location": random.choice(LOCATIONS)
     }
 
-    # Opcional: algunos eventos como login/logout no tienen product_id ni category
     if event["event_type"] in ["login", "logout"]:
         del event["product_id"]
         del event["category"]
